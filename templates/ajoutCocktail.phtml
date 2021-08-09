@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/cocktails.css">
+</head>
+
+<body class="container">
+    <?php include 'inc/nav.phtml'; ?>
+    <h1>Ajouter votre cocktail <i class="fas fa-blender"></i></h1>
+
+    <main class="row">
+        <div class="col-6 mx-auto mt-5">
+            <form method="POST" enctype="multipart/form-data" class=" border bg-danger p-3">
+                <?= $msg; //variable destinée à afficher message utilisateur 
+                ?>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom du cocktail">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description du cocktail</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" placeholder="Un peu d'histoire!"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="urlPhoto">Joindre un fichier</label>
+                    <input type="file" class="form-control-file" name="urlPhoto" id="urlPhoto">
+                </div>
+                <div class="form-group">
+                    <label for="nom">Prix Moyen (en €)</label>
+                    <input type="text" class="form-control" id="nom" name="prixMoyen" value="" placeholder="Prix">
+                </div>
+                <div class="form-group">
+                    <label for="anneeConception">Année de conception</label>
+                    <input type="text" class="form-control" id="anneeConception" name="anneeConception" value="" placeholder="1900">
+                </div>
+                <div class="form-group">
+                    <label for="nomFamille">Alcool appartenant à la famille:</label>
+                    <select class="form-control" id="idFamille" name="idFamille">
+                        <?php foreach ($nomFamille as $option) { ?>
+                            <option value="<?= $option['id'] ?>"><?= $option['nomFamille'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="text" name="ajouter" id="ajouter" class="w-100 btn bg-dark btn-outline-dark text-light">Ajouter</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-4 mx-auto mt-5">
+            <form action="" method="POST" class="border p-3 bg-danger">
+                <?= $msgFamille; ?>
+                <div class="form-group">
+                    <label for="nomFamille">Rajouter une nouvelle famille d'alcool</label>
+                    <input type="text" class="form-control" id="nomFamille" name="nomFamille" placeholder="Nom de la nouvelle famille">
+                </div>
+                <div>
+                    <input class="btn btn-dark float-right" type="submit" value="Ajouter">
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="POST" class="border p-3 bg-danger">
+                <?= $msgIngredient; ?>
+                <div class="form-group">
+                    <label for="nomIngredient">Rajouter un nouvel ingrédient</label>
+                    <input type="text" class="form-control" id="nomIngredient" name="nomIngredient" placeholder="Nom de l'ingrédient">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-dark float-right" type="submit" value="Ajouter">
+                </div>
+            </form>
+
+            <div class="pt-4">
+                <form action="" method="POST" class="border p-3 bg-danger">
+                    <label for="">Ajouter:</label>
+                    <?= $msgRelation; ?>
+                    <div class="form-group">
+                        <label for="idCocktail">A ce cocktail:</label>
+                        <select class="form-control" id="idCocktail" name="idCocktail">
+                            <?php foreach ($listeCocktails as $cocktail) { ?>
+
+                                <option value="<?= $cocktail['id'] ?>"><?= $cocktail['nom'] ?></option>
+
+                            <?php } ?>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="idIngredient">Cet ingrédient:</label>
+                        <select class="form-control" id="idIngredient" name="idIngredient">
+                            <?php foreach ($listeIngredients as $ingredient) { ?>
+
+                                <option value="<?= $ingredient['id'] ?>"><?= $ingredient['nomIngredient'] ?></option>
+
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-dark float-right" type="submit" id="valider" value="Valider">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

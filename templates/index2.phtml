@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+      <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Mister Cocktail</title>
+            <!-- BOOTSTRAP : css -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+            <!-- GOOGLE FONT : Montserrat -->
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+            <!-- GOOGLE FONT : Playfair Display -->            
+            <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet"> 
+            <!-- CSS -->
+            <link rel="stylesheet" href="assets/css/cocktails.css">
+
+            <!-- ICONS : FontAwesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+      </head>
+      <body class="container-fluid bg-dark">
+            <nav class="pb-3 border-bottom text-white">
+                  
+                  <h1 class="text-white mt-3"><i class="fas fa-glass-martini-alt"></i> Mister Cocktail <i class="fas fa-glass-martini-alt"></i> <a href="index.php" class="btn btn-outline-light float-right">Accueil</a></h1>
+            </nav>
+
+            <main class="row">
+            <?php  foreach($listeCocktails AS $cocktail) { ?>
+
+                  <div class="col-4 mb-3">
+                        <div class="card">
+                              <img src="assets/images/cocktails/<?= $cocktail['urlPhoto'] ?>" class="card-img-top" alt="image du cocktail : <?= $cocktail['nom'] ?>">
+                              <div class="card-body">
+                                    <h5 class="card-title"><?= $cocktail['nom'] ?></h5>
+                                    <p class="card-text text-justify"><?= $cocktail['description'] ?></p>
+                                    <div class="row">
+                                          <div class="col-6 text-left"><h6>Créé en : <?= $cocktail['anneeConception'] ?></h6></div>
+                                          <div class="col-6 text-right"><h6>Prix :  <?= $cocktail['prixMoyen'] ?> €</h6></div>
+                                    </div>
+                                    <hr>
+                                    <p class="text-right"><a href="" class="w-100 btn btn-outline-dark"><?= $cocktail['nomFamille'] ?></a></p>
+                              </div>
+                        </div>
+                  </div>
+
+
+            <?php } ?>
+
+            </main>
+      </body>
+</html>

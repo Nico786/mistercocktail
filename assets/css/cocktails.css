@@ -1,0 +1,91 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("../images/shamrock.jpeg");
+    background-size: 100vw;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Montserrat, sans-serif;
+    max-width: 1024px;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+.logo{
+    width:150px;
+    height:150px;
+}
+
+
+h1{
+    letter-spacing: 4px;
+    text-align: center;
+    color:white;
+}
+
+h2
+{
+    color: #19547b;
+    text-decoration: underline;
+    text-decoration-color: #19547b;
+}
+h4
+{
+    color: #19547b;
+}
+
+main
+{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+nav
+{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.card-img-top{
+    max-height:231px;
+    overflow: hidden;
+}
+
+
+.carte .card-text
+{
+    font-size: 90%;
+    text-align: justify;
+  
+}
+
+
+.card-title{
+    font-weight: 600;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.card{
+    border: 2px solid black;
+}
+
+.card-body h5 a{
+    text-decoration: none;
+    color:#dc3545;
+}
+
+label{
+    color:white;
+    font-size:16px;
+}
+
+.tableau{
+    background:black;
+    opacity: .8;
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/cocktails.css">
+</head>
+
+<body class="container">
+        <?php include 'inc/nav.phtml'; ?>
+        <h1>Mister Cocktail <i class="fas fa-cocktail"></i></h1>
+    
+    <div class="row">
+        <div class="col-12 mb-3">
+            <div class="dropdown">
+                <a class="btn btn-outline-dark bg-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filtrer par alcool
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="index.php">Toutes les familles</a>
+                    <?php foreach ($listeFamilleEtNombre as $ligne) { ?>
+                        <a class="dropdown-item" href="?famille=<?= $ligne['nomFamille'] ?>"><?= $ligne['nomFamille'] . ' (' . $ligne['nombre'] . ')' ?></a>
+                    <?php } ?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="row">
+
+
+        <?php foreach ($listeCocktails as $card) { ?>
+            <div class="col-sm-6 col-md-4 mb-3">
+                <div class="card carte">
+                    <a href="detailsCocktail.php?id=<?= $card['id'] ?>"><img class="card-img-top" src="assets/images/cocktails/<?= $card['urlPhoto'] ?>" alt="Image du cocktail <?= $card['urlPhoto'] ?>"></a>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="detailsCocktail.php?id=<?= $card['id'] ?>"><?= $card['nom'] ?></a></h5>
+                        <p class="card-text"><?= iconv_substr($card['description'], 0, 100) ?>...<a href="detailsCocktail.php?id=<?= $card['id'] ?>">Lire la suite</a> </div></p>
+                        <div class="row">
+                            <p class="col-6 text-left ml-3"><em>Depuis <?= $card['anneeConception'] ?></em></p>
+                            <p class="col-6 text-right mx-auto">Prix: <strong><?= $card['prixMoyen'] ?>€</strong></p>
+                        </div>
+                        <hr>
+                        <p class="text-right"><a href="?famille=<?= $card['nomFamille'] ?>" class="w-100 btn btn-outline-dark"><?= $card['nomFamille'] ?></a></p>
+
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+
+
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
